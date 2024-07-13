@@ -21,6 +21,22 @@ const Dashboard = () => {
                         <div className="">
                             <h1 className="text-xl text-gray-500 font-semibold px-4 pb-2">Chats</h1>
                             <hr />
+
+                            <div className="">
+                                <form method="post">
+                                    <select name="" id="" className='w-full h-12 rounded bg-gray-200 pl-2'>
+                                        <option value="">Select User</option>
+                                        <option value="">kamal@123.com</option>   
+                                        <option value="">kamal@123.com</option>                                    
+                                        <option value="">kamal@123.com</option> 
+                                        <option value="">kamal@123.com</option> 
+                                    </select>
+
+                                    <div className="">
+                                        <button type="submit" className='my-2 bg-green-600 py-2 px-4 rounded text-white duration-500 hover:bg-green-800'>Start Chat</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>  
                     <div className="bg-white rounded w-full md:ml-4 md:my-0 mt-4 shadow-md p-2 md:px-4 md:py-6">
