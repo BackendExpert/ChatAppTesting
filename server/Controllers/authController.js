@@ -6,7 +6,8 @@ const User = require('../Models/User');
 const authController = {
     SignUp: async (req, res) => {
         try{
-            const {username, email, password} = req.body.SignUpData
+            const {username, email, password} = req.body
+            // console.log(req.body)
                         
             // check user is in database
             const CheckUser = await User.findOne({ email, username })

@@ -19,7 +19,7 @@ const SignUp = () => {
         // signup to system
 
         try{
-            const res = await axios.post('http://localhost:8081/auth/SignUp', SignUpData)
+            const res = await axios.post('http://localhost:5000/auth/SignUp', SignUpData)
             .then(res => {
                 if(res.data.Status === "Success"){
                     alert("Registation Successfull")
