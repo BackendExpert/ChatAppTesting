@@ -101,6 +101,23 @@ const Dashboard = () => {
                             <div className="my-4">
                                 <div className="">
                                     <h1 className="text-gray-500 text-xl font-semibold px-4">My Chats</h1>
+
+                                    <div className="">
+                                        {
+                                            MyContacts.map((MyChats, index) => {
+                                                if(MyChats.starter === EmailUser) {
+                                                    return (
+                                                        <p className="">{MyChats.receiver}</p>
+                                                    )
+                                                }
+                                                else if(MyChats.receiver === EmailUser){
+                                                    return (
+                                                        <p className="">{MyChats.starter}</p>
+                                                    )
+                                                }
+                                            })
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +130,7 @@ const Dashboard = () => {
                                 </div>
                                 <div className="flex text-gray-500">
                                     <BsPersonCircle className='text-right h-6 w-auto'/>     
-                                    <p className="pl-2">jehan@123.com</p>                               
+                                    <p className="pl-2">{EmailUser}</p>                               
                                 </div>
                             </div>
                         </div>
