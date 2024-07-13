@@ -3,6 +3,6 @@ const ContactController = require('../Controllers/ContactController')
 
 const router = express.Router()
 
-router.get('/StartContact/:id')
+router.get('/StartContact/:id', ContactController.ContactStart)
 
 module.exports = router
