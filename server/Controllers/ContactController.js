@@ -11,7 +11,14 @@ const ContactController = {
                 receiver: contactUser
             })
 
-            const CreateCon = await 
+            const CreateCon = NewConnection.save()
+            
+            if(CreateCon){
+                return res.json({ Status: "Success"})
+            }
+            else{
+                return res.json({ Error: "Internel Server Error"})
+            }
         }
         catch (err) {
             console.log(err)

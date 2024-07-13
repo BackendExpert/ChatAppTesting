@@ -38,8 +38,15 @@ const Dashboard = () => {
 
         try{
             const res = await axios.post(`http://localhost:5000/contact/StartContact/${EmailUser}`, addtoContact)
-            .then(res => SetMyContacts(res.data.Result))
-            .catch(err => console.log(err))
+            .then(res => {
+                if(res.data.Status === "Success"){
+                    alert("Connection Started Successful")
+                    window.location.reload()
+                }
+                else{
+                    alert(res.data.Error)
+                }
+            })
         }   
         catch (err) {
             console.log(err)
