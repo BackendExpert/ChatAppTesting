@@ -31,8 +31,6 @@ const Dashboard = () => {
         contactUser: '',
     })
 
-    const [MyContacts, SetMyContacts] = useState([])
-
     const headleAddUser = async (e) => {
         e.preventDefault();
 
@@ -59,6 +57,16 @@ const Dashboard = () => {
         navigate('/')
         window.location.reload()
     }
+
+    // get my chat
+    const [MyContacts, SetMyContacts] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/contact/MyChats/'+ EmailUser)
+        .then(res => SetMyContacts(res.data.Result))
+        .catch(err => console.log(err))
+    }, [])
+
 
     if(RoleUser !== null && EmailUser !== null){
         return (
