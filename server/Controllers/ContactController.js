@@ -47,7 +47,14 @@ const ContactController = {
 
     ChatMy: async (req, res) => {
         try{
+            const MyEmail = req.params.id;
 
+            const AllMyContacts = await Contact.find({
+                $or: [
+                    { starter: MyEmail },
+                    { receiver: MyEmail },
+                ]
+            })
         }
         catch (err) {
             console.log(err)
