@@ -156,7 +156,7 @@ const Dashboard = () => {
                         </div>
                     </div>                
                 </div>
-                <h1 className="text-center pt-8">&copy; Online Chat App | 2024 | v1.0.0 - 13 July | </h1>
+                <h1 className="text-center pt-8">&copy; Online Chat App |  v1.0.0 - 13 July 2024 | </h1>
             </div>
         )
     }
