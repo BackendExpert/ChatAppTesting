@@ -156,7 +156,10 @@ const Dashboard = () => {
                         </div>
                     </div>                
                 </div>
-                <h1 className="text-center pt-8">&copy; Online Chat App |  v1.0.0 - 13 July 2024 | </h1>
+                <div className='text-gray-600 pb-4 px-4 text-sm text-center'>
+                    Copyright &copy; 2024 | Online Chat App | All Right Reserved | v1.0.0<br />
+                    Designed and Developed By : <a href=""><span className="text-blue-500">JehanKandy</span></a>
+                </div>
             </div>
         )
     }
