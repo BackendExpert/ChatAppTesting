@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { BsPerson, BsPersonCircle } from 'react-icons/bs';
+import { BsPerson, BsPersonCircle, BsPower } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import  secureLocalStorage  from  "react-secure-storage"
 
@@ -34,6 +34,12 @@ const Dashboard = () => {
         catch (err) {
             console.log(err)
         }
+    }
+
+    // logout
+    const headlelogout = () => {
+        localStorage.clear()
+        navigate('/')
     }
 
     if(RoleUser !== null && EmailUser !== null){
@@ -71,7 +77,9 @@ const Dashboard = () => {
                     <div className="w-full">
                         <div className="bg-white rounded w-full md:ml-4 md:my-0 md:mb-2 mt-4 shadow-md p-2 md:px-4 md:py-6">
                             <div className="flex justify-between">
-                                <div className=""></div>
+                                <div className="">
+                                    <div onClick={headlelogout} className="flex text-red-500"><BsPower className='h-6 w-auto'/> Logout</div>
+                                </div>
                                 <div className="flex text-gray-500">
                                     <BsPersonCircle className='text-right h-6 w-auto'/>     
                                     <p className="pl-2">jehan@123.com</p>                               
