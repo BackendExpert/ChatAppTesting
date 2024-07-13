@@ -25,8 +25,15 @@ const Dashboard = () => {
     }, [])
 
     // select user
-    const headleAddUser = (e) => {
+    const headleAddUser = async (e) => {
         e.preventDefault();
+
+        try{
+            const res = await axios.post('http://localhost:5000/contact')
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
 
     if(RoleUser !== null && EmailUser !== null){
