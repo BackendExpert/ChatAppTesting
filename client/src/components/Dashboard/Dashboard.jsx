@@ -40,7 +40,7 @@ const Dashboard = () => {
 
                             <div className="mx-4 mt-4">
                                 <form method="post" onSubmit={headleAddUser}>
-                                    <select name="" id="" className='w-full h-12 rounded bg-gray-200 pl-2'>
+                                    <select name="" id="" className='w-full h-12 rounded bg-gray-200 pl-2' required>
                                         <option value="">Select User</option>
                                         {
                                             AllUsers.map((user) => {
@@ -55,6 +55,9 @@ const Dashboard = () => {
                                         <button type="submit" className='my-2 bg-green-600 py-2 px-4 rounded text-white duration-500 hover:bg-green-800'>Start Chat</button>
                                     </div>
                                 </form>
+                            </div>
+                            <div className="">
+                                <hr />
                             </div>
                         </div>
                     </div>  
