@@ -90,6 +90,11 @@ const Dashboard = () => {
                             <div className="">
                                 <hr />
                             </div>
+                            <div className="my-4">
+                                <div className="">
+                                    <h1 className="text-gray-500 text-xl font-semibold px-4">My Chats</h1>
+                                </div>
+                            </div>
                         </div>
                     </div>  
                     <div className="w-full">
