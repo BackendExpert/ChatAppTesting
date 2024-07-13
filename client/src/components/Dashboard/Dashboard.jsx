@@ -40,7 +40,7 @@ const Dashboard = () => {
             const res = await axios.get('http://localhost:5000/contact/' + EmailUser, {addtoContact})
             .then(res => SetMyContacts(res.data.Result))
             .catch(err => console.log(err))
-        }
+        }   
         catch (err) {
             console.log(err)
         }
