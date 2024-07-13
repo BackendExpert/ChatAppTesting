@@ -71,6 +71,17 @@ const Dashboard = () => {
     if(RoleUser !== null && EmailUser !== null){
         return (
             <div className='bg-gray-200 py-8 md:px-12 px-6 min-h-screen'>
+                <div className="bg-white md:hidden block">
+                    <div className="flex justify-between py-4 px-4 mb-3 rounded shadow-md">
+                        <div className="">
+                            <div onClick={headlelogout} className="cursor-pointer flex text-red-500"><BsPower className='h-6 w-auto'/> Logout</div>
+                        </div>
+                        <div className="flex text-gray-500">
+                            <BsPersonCircle className='text-right h-6 w-auto'/>     
+                            <p className="pl-2">{EmailUser}</p>                               
+                        </div>
+                    </div>
+                </div>
                 <div className="md:flex">
                     <div className="bg-white py-4 px-2 rounded md:w-[30%] shadow-md">
                         <div className="">
@@ -107,12 +118,18 @@ const Dashboard = () => {
                                             MyContacts.map((MyChats, index) => {
                                                 if(MyChats.starter === EmailUser) {
                                                     return (
-                                                        <p className="">{MyChats.receiver}</p>
+                                                        <div className="duration-500 hover:bg-gray-200 cursor-pointer flex text-gray-500 bg-gray-100 my-2 py-4 px-2 rounded">
+                                                            <BsPersonCircle className='h-6 w-auto'/>
+                                                            <p className="pl-2 ">{MyChats.receiver}</p>
+                                                        </div>                                                        
                                                     )
                                                 }
                                                 else if(MyChats.receiver === EmailUser){
                                                     return (
-                                                        <p className="">{MyChats.starter}</p>
+                                                        <div className="duration-500 hover:bg-gray-200 cursor-pointer flex text-gray-500 bg-gray-100 my-2 py-4 px-2 rounded">
+                                                            <BsPersonCircle className='h-6 w-auto'/>
+                                                            <p className="pl-2 ">{MyChats.starter}</p>
+                                                        </div>  
                                                     )
                                                 }
                                             })
@@ -123,7 +140,7 @@ const Dashboard = () => {
                         </div>
                     </div>  
                     <div className="w-full">
-                        <div className="bg-white rounded w-full md:ml-4 md:my-0 md:mb-2 mt-4 shadow-md p-2 md:px-4 md:py-6">
+                        <div className="md:block hidden bg-white rounded w-full md:ml-4 md:my-0 md:mb-2 mt-4 shadow-md p-2 md:px-4 md:py-6">
                             <div className="flex justify-between">
                                 <div className="">
                                     <div onClick={headlelogout} className="cursor-pointer flex text-red-500"><BsPower className='h-6 w-auto'/> Logout</div>
@@ -139,6 +156,7 @@ const Dashboard = () => {
                         </div>
                     </div>                
                 </div>
+                <h1 className="text-center pt-8">&copy; Online Chat App | 2024 | v1.0.0 - 13 July | </h1>
             </div>
         )
     }
