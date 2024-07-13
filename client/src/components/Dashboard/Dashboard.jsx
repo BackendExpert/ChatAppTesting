@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import  secureLocalStorage  from  "react-secure-storage"
@@ -13,6 +14,20 @@ const Dashboard = () => {
         window.location.reload();
     }
 
+    // get all users to select
+    const [AllUsers, SetAllUsers] = useState([])
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/user/GetAllUser')
+        .then(res => SetAllUsers(res.data.Result))
+        .catch(err => console.log(err))
+    }, [])
+
+    // select user
+    const headleAddUser = (e) => {
+        e.preventDefault();
+    }
+
     if(RoleUser !== null && EmailUser !== null){
         return (
             <div className='bg-gray-200 py-8 md:px-12 px-6 min-h-screen'>
@@ -23,7 +38,7 @@ const Dashboard = () => {
                             <hr />
 
                             <div className="">
-                                <form method="post">
+                                <form method="post" onSubmit={headleAddUser}>
                                     <select name="" id="" className='w-full h-12 rounded bg-gray-200 pl-2'>
                                         <option value="">Select User</option>
                                         <option value="">kamal@123.com</option>   
