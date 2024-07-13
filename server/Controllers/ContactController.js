@@ -11,7 +11,9 @@ const ContactController = {
             const ConnAlreadyhave = await Contact.findOne({
                 $and: [
                     { starter: userEmail },
-                    { receiver: contactUser }
+                    { receiver: contactUser },
+                    { starter: contactUser },
+                    { receiver: userEmail },
                 ]
             })
 
