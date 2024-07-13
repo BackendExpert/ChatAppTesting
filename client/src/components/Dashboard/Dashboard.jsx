@@ -37,7 +37,7 @@ const Dashboard = () => {
         e.preventDefault();
 
         try{
-            const res = await axios.get('http://localhost:5000/contact/' + EmailUser, {addtoContact})
+            const res = await axios.get('http://localhost:5000/contact/StartContact/' + EmailUser, {addtoContact})
             .then(res => SetMyContacts(res.data.Result))
             .catch(err => console.log(err))
         }   
