@@ -6,6 +6,8 @@ const ContactController = {
             const userEmail = req.params.id;
             const { contactUser } = req.body;
 
+            const ConnAlreadyhave = await Contact.find()
+
             const NewConnection = new Contact({
                 starter: userEmail,
                 receiver: contactUser
