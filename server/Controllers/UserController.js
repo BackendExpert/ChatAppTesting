@@ -1,17 +1,28 @@
 const User = require('../Models/User')
+const Contact = require('../Models/Contact')
 
 const UserController = {
     GetAllUsers: async (req, res) => {
         try{
-            // console.log(req.params.id)
-            const allUser = await User.find({ email: { $ne: req.params.id } })
+            const connections = await Contact.find();
+            const connectionEmails = new Set();
 
-            if(allUser) {
-                return res.json({ Result: allUser })
+            connections.forEach(conn => {
+                connectionEmails.add(conn.starter);
+                connectionEmails.add(conn.receiver);
+            });
+
+            const nonUserConnection = await User.find({
+                email: { $nin: Array.from(connectionEmails) }
+            });
+
+            if(nonUserConnection){
+                return res.json({ Result: nonUserConnection })
             }
             else{
-                return res.json({ Error: "Internal Server Error"})
+                return res.json({ Error: "Internel Server Error"})
             }
+
         }
         catch (err) {
             console.log(err)
