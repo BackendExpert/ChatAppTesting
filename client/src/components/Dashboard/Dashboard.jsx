@@ -35,9 +35,9 @@ const Dashboard = () => {
 
     const headleAddUser = async (e) => {
         e.preventDefault();
-
+        alert(addtoContact.contactUser)
         try{
-            const res = await axios.get('http://localhost:5000/contact/StartContact/' + EmailUser, {addtoContact})
+            const res = await axios.get(`http://localhost:5000/contact/StartContact/${EmailUser}`, addtoContact)
             .then(res => SetMyContacts(res.data.Result))
             .catch(err => console.log(err))
         }   
@@ -64,12 +64,12 @@ const Dashboard = () => {
 
                             <div className="mx-4 mt-4">
                                 <form method="post" onSubmit={headleAddUser}>
-                                    <select name="" id="" className='w-full h-12 rounded bg-gray-200 pl-2' required>
+                                    <select name="" id="" className='w-full h-12 rounded bg-gray-200 pl-2' required onChange={e => SetaddtoContact({...addtoContact, contactUser:e.target.value})}>
                                         <option value="">Select User</option>
                                         {
-                                            AllUsers.map((user) => {
+                                            AllUsers.map((user, index) => {
                                                 return (
-                                                    <option value={user.email}>{user.email}</option>  
+                                                    <option key={index} value={user.email}>{user.email}</option>  
                                                 )
                                             })
                                         }

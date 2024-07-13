@@ -4,7 +4,7 @@ const ContactController = {
     ContactStart: async(req, res) => {
         try{
             const userEmail = req.params.id;
-            console.log(req.body)
+            console.log(userEmail, req.body.addtoContact)
         }
         catch (err) {
             console.log(err)
