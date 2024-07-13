@@ -24,12 +24,22 @@ const Dashboard = () => {
         .catch(err => console.log(err))
     }, [])
 
-    // select user
+
+
+    // select user and add to contacts
+    const [addtoContact, SetaddtoContact] = useState({
+        contactUser: '',
+    })
+
+    const [MyContacts, SetMyContacts] = useState([])
+
     const headleAddUser = async (e) => {
         e.preventDefault();
 
         try{
-            const res = await axios.post('http://localhost:5000/contact')
+            const res = await axios.get('http://localhost:5000/contact/' + EmailUser, {addtoContact})
+            .then(res => SetMyContacts(res.data.Result))
+            .catch(err => console.log(err))
         }
         catch (err) {
             console.log(err)
@@ -40,6 +50,7 @@ const Dashboard = () => {
     const headlelogout = () => {
         localStorage.clear()
         navigate('/')
+        window.location.reload()
     }
 
     if(RoleUser !== null && EmailUser !== null){
@@ -78,7 +89,7 @@ const Dashboard = () => {
                         <div className="bg-white rounded w-full md:ml-4 md:my-0 md:mb-2 mt-4 shadow-md p-2 md:px-4 md:py-6">
                             <div className="flex justify-between">
                                 <div className="">
-                                    <div onClick={headlelogout} className="flex text-red-500"><BsPower className='h-6 w-auto'/> Logout</div>
+                                    <div onClick={headlelogout} className="cursor-pointer flex text-red-500"><BsPower className='h-6 w-auto'/> Logout</div>
                                 </div>
                                 <div className="flex text-gray-500">
                                     <BsPersonCircle className='text-right h-6 w-auto'/>     
