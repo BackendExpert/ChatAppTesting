@@ -20,37 +20,19 @@ const SignIn = () => {
 
         try{
             const res = await axios.post('http://localhost:5000/auth/SignIn', LoginData)
-
-            const loginToken = res.data.Token;
-
-            //store token in localstorage
-            localStorage.setItem('LoginToken', loginToken)
-
-            if(res.data.Msg === "Success"){
-                if(res.data.LoginUser[0].is_active === 0 && res.data.LoginUser[0].is_lock === 1){
-                    alert('Your Account has been locked. Unauthorized activity has been detected.')
-                    localStorage.clear()
-                    navigate('/')
-                }
-                else if(res.data.LoginUser[0].is_active === 0){
-                    alert('Your Account is still not Activate Wait for Activate from Admin')
-                    localStorage.clear()
-                    navigate('/')
+            .then(res => {
+                if(res.data.Status === "Success"){
+                    alert("Login Successfull")
+                    localStorage.setItem('token', res.data.Token)
+                    navigate('/Dashboard')
+                    // login user Email 
+                    secureLocalStorage.setItem('Login1', res.data.Result.email)
+                    secureLocalStorage.setItem('Login2', res.data.Result.Role)                    
                 }
                 else{
-                    //get and store login user role and email
-                    const userRole = res.data.LoginUser[0].role;
-                    const userEmail = res.data.LoginUser[0].email;
-
-                    //store data in localstore so that use secureLocalStorage
-                    secureLocalStorage.setItem("Login1", userRole);
-                    secureLocalStorage.setItem("login2", userEmail);
-                    navigate('/Dashboard');
+                    alert(res.data.Error)
                 }
-            }
-            else{
-                alert(res.data.Error)
-            }
+            })
         }
         catch (err) {
             console.log(err)
