@@ -37,7 +37,7 @@ const Dashboard = () => {
                             <h1 className="text-xl text-gray-500 font-semibold px-4 pb-2">Chats</h1>
                             <hr />
 
-                            <div className="">
+                            <div className="mx-4 mt-4">
                                 <form method="post" onSubmit={headleAddUser}>
                                     <select name="" id="" className='w-full h-12 rounded bg-gray-200 pl-2'>
                                         <option value="">Select User</option>
