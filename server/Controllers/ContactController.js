@@ -12,12 +12,17 @@ const ContactController = {
                 $and: [
                     { starter: userEmail },
                     { receiver: contactUser },
+                ]
+            })
+
+            const ConnAlreadyhaveBack = await Contact.findOne({
+                $and: [
                     { starter: contactUser },
                     { receiver: userEmail },
                 ]
             })
 
-            if(ConnAlreadyhave) {
+            if(ConnAlreadyhave || ConnAlreadyhaveBack) {
                 return res.json({ Error: "Sorry..., This Connection is Already Exists"})
             }
 
