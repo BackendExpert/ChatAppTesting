@@ -6,7 +6,16 @@ const ContactController = {
             const userEmail = req.params.id;
             const { contactUser } = req.body;
 
-            const ConnAlreadyhave = await Contact.find()
+            const ConnAlreadyhave = await Contact.find({
+                $and: [
+                    { starter: userEmail },
+                    { receiver: contactUser }
+                ]
+            })
+
+            if(ConnAlreadyhave) {
+                return res.json({ Error: "Sorry..., This Connection is Already Exists"})
+            }
 
             const NewConnection = new Contact({
                 starter: userEmail,
