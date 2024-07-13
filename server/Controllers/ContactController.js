@@ -55,6 +55,13 @@ const ContactController = {
                     { receiver: MyEmail },
                 ]
             })
+
+            if(AllMyContacts) {
+                return res.json({ Result: AllMyContacts })
+            }
+            else{
+                return res.json({ Error: "Internal Server Error"})
+            }
         }
         catch (err) {
             console.log(err)
