@@ -41,10 +41,13 @@ const Dashboard = () => {
                                 <form method="post" onSubmit={headleAddUser}>
                                     <select name="" id="" className='w-full h-12 rounded bg-gray-200 pl-2'>
                                         <option value="">Select User</option>
-                                        <option value="">kamal@123.com</option>   
-                                        <option value="">kamal@123.com</option>                                    
-                                        <option value="">kamal@123.com</option> 
-                                        <option value="">kamal@123.com</option> 
+                                        {
+                                            AllUsers.map((user) => {
+                                                return (
+                                                    <option value={user.email}>{user.email}</option>  
+                                                )
+                                            })
+                                        }
                                     </select>
 
                                     <div className="">
