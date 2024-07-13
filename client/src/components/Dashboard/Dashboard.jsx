@@ -18,7 +18,7 @@ const Dashboard = () => {
     const [AllUsers, SetAllUsers] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/user/GetAllUser')
+        axios.get('http://localhost:5000/user/GetAllUser/', EmailUser)
         .then(res => SetAllUsers(res.data.Result))
         .catch(err => console.log(err))
     }, [])
