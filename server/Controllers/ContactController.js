@@ -6,7 +6,9 @@ const ContactController = {
             const userEmail = req.params.id;
             const { contactUser } = req.body;
 
-            const ConnAlreadyhave = await Contact.find({
+            // console.log(userEmail, contactUser)
+
+            const ConnAlreadyhave = await Contact.findOne({
                 $and: [
                     { starter: userEmail },
                     { receiver: contactUser }
