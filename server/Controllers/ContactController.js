@@ -6,7 +6,12 @@ const ContactController = {
             const userEmail = req.params.id;
             const { contactUser } = req.body;
 
-            
+            const NewConnection = new Contact({
+                starter: userEmail,
+                receiver: contactUser
+            })
+
+            const CreateCon = await 
         }
         catch (err) {
             console.log(err)
