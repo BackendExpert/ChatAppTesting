@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import  secureLocalStorage  from  "react-secure-storage"
 import io from 'socket.io-client';
 
+const socket = io('http://localhost:5000');
+
 const Dashboard = () => {
     const navigate = useNavigate()
     const EmailUser = secureLocalStorage.getItem("Login1");
