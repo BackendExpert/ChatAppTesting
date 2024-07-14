@@ -110,7 +110,7 @@ const Dashboard = () => {
             MsgContent.current.scrollTop = MsgContent.current.scrollHeight;
         }
 
-        const MessageContnet = { EmailUser, Msg }
+        const MessageContnet = { EmailUser, Msg, CurrentChat}
 
         axios.post('http://localhost:5000/message/SendMessage', MessageContnet)
         socket.emit('chat message', Msg.MessageSend );
