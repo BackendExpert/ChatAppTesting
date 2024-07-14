@@ -72,8 +72,8 @@ const Dashboard = () => {
 
     const GetCurrentChat = (id) => {
         // alert(id)
+        SetCurrentChat(id)
 
-        
     }
 
 
@@ -161,7 +161,13 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="bg-white rounded w-full md:ml-4 md:my-0 mt-4 shadow-md p-2 md:px-4 md:py-6">
-                            hi all
+                            <div className="">
+                                <div className="flex text-gray-500">
+                                    <BsPersonCircle className='h-6 w-auto pr-2'/>
+                                    {CurrentChat}
+                                </div>
+                            </div>
+                            <hr className='my-2'/>
                         </div>
                     </div>                
                 </div>
