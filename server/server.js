@@ -12,6 +12,7 @@ const authRoute = require('./Routes/authRoute')
 const UserRoute = require('./Routes/UserRoute')
 const ContactRoute = require('./Routes/ContactRoute')
 const MessageRoute = require('./Routes/MessageRoute')
+const Message = require('./Models/Message')
 
 const app = express();
 const PORT = process.env.PORT || 5000
@@ -39,7 +40,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('chat message', async (msg) => {
-        const message = new Message({ username: msg.username, content: msg.content });
+        const message = new Message({ sender: msg.EmailUser, receiver: msg.CurrentChat, messgaeContent: msg.Msg.MessageSend });
         await message.save();
         io.emit('chat message', msg);
     });
