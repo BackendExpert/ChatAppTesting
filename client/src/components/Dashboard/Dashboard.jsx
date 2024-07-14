@@ -70,7 +70,12 @@ const Dashboard = () => {
     // when click  any contecnt get data and display in div
     const [CurrentChat, SetCurrentChat] = useState([])
 
-    
+    const GetCurrentChat = (id) => {
+        // alert(id)
+
+        
+    }
+
 
     if(RoleUser !== null && EmailUser !== null){
         return (
@@ -122,7 +127,7 @@ const Dashboard = () => {
                                             MyContacts.map((MyChats, index) => {
                                                 if(MyChats.starter === EmailUser) {
                                                     return (
-                                                        <div className="duration-500 hover:bg-gray-200 cursor-pointer flex text-gray-500 bg-gray-100 my-2 py-4 px-2 rounded">
+                                                        <div onClick={() => GetCurrentChat(MyChats.receiver)} className="duration-500 hover:bg-gray-200 cursor-pointer flex text-gray-500 bg-gray-100 my-2 py-4 px-2 rounded">
                                                             <BsPersonCircle className='h-6 w-auto'/>
                                                             <p className="pl-2 ">{MyChats.receiver}</p>
                                                         </div>                                                        
@@ -130,7 +135,7 @@ const Dashboard = () => {
                                                 }
                                                 else if(MyChats.receiver === EmailUser){
                                                     return (
-                                                        <div className="duration-500 hover:bg-gray-200 cursor-pointer flex text-gray-500 bg-gray-100 my-2 py-4 px-2 rounded">
+                                                        <div onClick={() => GetCurrentChat(MyChats.starter)} className="duration-500 hover:bg-gray-200 cursor-pointer flex text-gray-500 bg-gray-100 my-2 py-4 px-2 rounded">
                                                             <BsPersonCircle className='h-6 w-auto'/>
                                                             <p className="pl-2 ">{MyChats.starter}</p>
                                                         </div>  
