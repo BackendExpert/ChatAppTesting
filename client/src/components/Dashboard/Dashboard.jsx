@@ -67,6 +67,10 @@ const Dashboard = () => {
         .catch(err => console.log(err))
     }, [])
 
+    // when click  any contecnt get data and display in div
+    const [CurrentChat, SetCurrentChat] = useState([])
+
+    
 
     if(RoleUser !== null && EmailUser !== null){
         return (
