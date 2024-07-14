@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { BsPerson, BsPersonCircle, BsPower } from 'react-icons/bs';
+import { BsPerson, BsPersonCircle, BsPower, BsSendFill } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import  secureLocalStorage  from  "react-secure-storage"
 
@@ -69,11 +69,26 @@ const Dashboard = () => {
 
     // when click  any contecnt get data and display in div
     const [CurrentChat, SetCurrentChat] = useState([])
+    const [MessageSelected, SetMessageSelected] = useState(false)
 
     const GetCurrentChat = (id) => {
         // alert(id)
         SetCurrentChat(id)
+        SetMessageSelected(true)
 
+
+        
+    }
+
+    const [Msg, SetMsg] = useState({
+        MessageSend: ''
+    })
+
+    // send msg
+    const headleSendMsg = (e) => {
+        e.preventDefault();
+        SetMessageSelected(true)
+        SetMsg({ MessageSend: ''})
     }
 
 
@@ -161,24 +176,45 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div className="h-[600px] bg-white rounded w-full md:ml-4 md:my-0 mt-4 shadow-md p-2 md:px-4 md:py-6">
-                            <div className="">
-                                <div className="flex text-gray-500">
-                                    <BsPersonCircle className='h-6 w-auto pr-2'/>
-                                    {CurrentChat}
-                                </div>
-                            </div>
-                            <hr className='my-2'/>
+                            {
+                                (() => {
+                                    if(MessageSelected === true){
+                                        return (
+                                            <>
+                                                <div className="">
+                                                    <div className="flex text-gray-500">
+                                                        <BsPersonCircle className='h-6 w-auto pr-2'/>
+                                                        {CurrentChat}
+                                                    </div>
+                                                </div>
+                                                <hr className='my-2'/>
 
-                            <div className="flex flex-col h-full">
-                                <div className="flex-grow">
-                                    chat content
-                                </div>
-                                <div className="md:mb-8 mb-10">
-                                    <form action="">
-                                        <input type="text" name="" id="" className="h-12 w-full bg-gray-200 pl-2 rounded" required placeholder='Message'/>
-                                    </form>
-                                </div>
-                            </div>
+                                                <div className="flex flex-col h-full">
+                                                    <div className="flex-grow">
+                                                        chat content
+                                                    </div>
+                                                    <div className="md:mb-8 mb-10">
+                                                        <form method='post' onSubmit={headleSendMsg}>
+                                                            <div className="flex justify-between">
+                                                                <input type="text" name="" id="" className="h-12 w-full bg-gray-200 pl-2 rounded" required placeholder='Message'
+                                                                value={Msg.MessageSend} onChange={e => SetMsg({...Msg, MessageSend:e.target.value})}/>
+                                                                <button type="submit" className='pl-4'>
+                                                                    <BsSendFill className='text-blue-500'/>
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        )
+                                    }
+                                    else{
+                                        return (
+                                            <div className="">Select Chat or Start New Chat</div>
+                                        )
+                                    }
+                                })()
+                            }
                         </div>
                     </div>                
                 </div>
