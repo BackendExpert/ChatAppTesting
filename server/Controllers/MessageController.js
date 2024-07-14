@@ -19,7 +19,17 @@ const MessageController = {
         catch (err) {
             console.log(err)
         }
+    },
+
+    GetMessagesCurrent: async (req, res) => {
+        try{
+
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
+    
 }
 
 module.exports = MessageController
