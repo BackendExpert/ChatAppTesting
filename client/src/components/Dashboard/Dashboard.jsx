@@ -237,15 +237,21 @@ const Dashboard = () => {
                                                             GetCurrentChatMsgs.map((ChatMsg, index) => {
                                                                 if(ChatMsg.sender === EmailUser){
                                                                     return (
-                                                                        <div className="" key={index}>
-                                                                            {EmailUser} + {ChatMsg.messgaeContent}
+                                                                        <div className="flex justify-between" key={index}>
+                                                                            <div className=""></div>
+                                                                            <div className="bg-green-200 mr-4 py-2 px-4 rounded shadow-md my-1">
+                                                                                {ChatMsg.messgaeContent}
+                                                                            </div>
                                                                         </div>
                                                                     )
                                                                 }
                                                                 else if(ChatMsg.sender === CurrentChat){
                                                                     return (
-                                                                        <div className="" key={index}>
-                                                                            {CurrentChat} + {ChatMsg.messgaeContent}
+                                                                        <div className="flex justify-between" key={index}>
+                                                                            <div className="bg-gray-100 mr-4 py-2 px-4 rounded shadow-md my-1">
+                                                                                {ChatMsg.messgaeContent}
+                                                                            </div>
+                                                                            <div className=""></div>
                                                                         </div>
                                                                     )
                                                                 }
