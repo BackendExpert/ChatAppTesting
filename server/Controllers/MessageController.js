@@ -24,6 +24,7 @@ const MessageController = {
     GetMessagesCurrent: async (req, res) => {
         try{
             console.log(req.params.id)
+            console.log(req.body.id)
         }
         catch (err) {
             console.log(err)
