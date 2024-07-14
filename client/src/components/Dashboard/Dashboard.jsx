@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { BsPerson, BsPersonCircle, BsPower, BsSendFill } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import  secureLocalStorage  from  "react-secure-storage"
+
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -84,11 +85,17 @@ const Dashboard = () => {
         MessageSend: ''
     })
 
+    // MsgContent
+    const MsgContent = useRef(null)
+
     // send msg
     const headleSendMsg = (e) => {
         e.preventDefault();
         SetMessageSelected(true)
         SetMsg({ MessageSend: ''})
+        if (MsgContent.current) {
+            MsgContent.current.scrollTop = MsgContent.current.scrollHeight;
+        }
     }
 
 
@@ -190,7 +197,7 @@ const Dashboard = () => {
                                                 <hr className='my-2'/>
 
                                                 <div className="flex flex-col h-full">
-                                                    <div className="overflow-y-auto max-h-[460px] mb-2">
+                                                    <div ref={MsgContent} className="overflow-y-auto max-h-[460px] mb-2 scrollbar-hide">
                                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum facilis impedit dicta rerum illum provident dignissimos esse sed! Laboriosam possimus nihil quo impedit eum, maiores asperiores odio sequi. Mollitia, dignissimos?
                                                         Maxime perferendis ullam officiis repellendus magnam quae tempora eligendi unde asperiores, reiciendis provident nemo, exercitationem ut? Nesciunt, quaerat eaque dolorem delectus veritatis labore eos temporibus amet et dolor officiis distinctio.
                                                         Eius incidunt natus nostrum dignissimos minima magnam commodi perferendis laboriosam blanditiis impedit corrupti animi, deserunt inventore, ullam voluptatum quasi molestias aut porro veritatis? Rerum at totam eum officiis facere est.
