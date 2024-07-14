@@ -90,6 +90,16 @@ const Dashboard = () => {
     // MsgContent
     const MsgContent = useRef(null)
 
+    useEffect(() => {
+        socket.on('chat message', (newMsg) => {
+            SetMsg((prevMessages) => [...prevMessages, newMsg]);
+        });
+
+        return () => {
+            socket.off('chat message');
+        };
+    }, []);
+
     // send msg
     const headleSendMsg = (e) => {
         e.preventDefault();
@@ -100,6 +110,8 @@ const Dashboard = () => {
         if (MsgContent.current) {
             MsgContent.current.scrollTop = MsgContent.current.scrollHeight;
         }
+
+        socket.emit('chat message', Msg);
 
     }
 
