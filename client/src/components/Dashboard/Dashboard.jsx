@@ -75,15 +75,29 @@ const Dashboard = () => {
     const [MessageSelected, SetMessageSelected] = useState(false)
     const [GetCurrentChatMsgs, SetGetCurrentChatMsgs] = useState([])
 
-    const GetCurrentChat = (id) => {
+    const GetCurrentChat = async (id) => {
         // alert(id)
         SetCurrentChat(id)
         SetMessageSelected(true)
+    }
 
+    useEffect(() => {
+        const id = CurrentChat
         axios.get(`http://localhost:5000/message/GetMessages/${EmailUser}/${id}`)
         .then (res => SetGetCurrentChatMsgs(res.data.Result))
-        .catch(err => console.log(err))        
-    }
+        .catch(err => console.log(err))  
+    })
+
+    // useEffect(() => {
+    //     GetCurrentChat()
+    //     socket.on('chat message', (newMsg) => {
+    //         SetMsg((prevMessages) => [...prevMessages, newMsg]);
+    //     });
+
+    //     return () => {
+    //         socket.off('chat message');
+    //     };
+    // }, [])
 
     const [Msg, SetMsg] = useState({
         MessageSend: ''
@@ -93,16 +107,13 @@ const Dashboard = () => {
     const MsgContent = useRef(null)
 
     useEffect(() => {
-        socket.on('chat message', (newMsg) => {
-            SetMsg((prevMessages) => [...prevMessages, newMsg]);
-        });
 
-        return () => {
-            socket.off('chat message');
-        };
     }, []);
 
     // send msg
+
+    // form only reload chat div
+
     const headleSendMsg = (e) => {
         e.preventDefault();
         SetMessageSelected(true)        
@@ -117,6 +128,8 @@ const Dashboard = () => {
         axios.post('http://localhost:5000/message/SendMessage', MessageContnet)
         socket.emit('chat message', Msg.MessageSend );
         SetMsg({ MessageSend: ''})
+
+
 
     }
 
@@ -222,11 +235,21 @@ const Dashboard = () => {
                                                     <div ref={MsgContent} className="overflow-y-auto max-h-[460px] mb-2 scrollbar-hide">
                                                         {
                                                             GetCurrentChatMsgs.map((ChatMsg, index) => {
-                                                                return (
-                                                                    <div className="" key={index}>
-                                                                        {ChatMsg.messgaeContent}
-                                                                    </div>
-                                                                )
+                                                                if(ChatMsg.sender === EmailUser){
+                                                                    return (
+                                                                        <div className="" key={index}>
+                                                                            {EmailUser} + {ChatMsg.messgaeContent}
+                                                                        </div>
+                                                                    )
+                                                                }
+                                                                else if(ChatMsg.sender === CurrentChat){
+                                                                    return (
+                                                                        <div className="" key={index}>
+                                                                            {CurrentChat} + {ChatMsg.messgaeContent}
+                                                                        </div>
+                                                                    )
+                                                                }
+
                                                             })
                                                         }
                                                     </div>
