@@ -27,11 +27,22 @@ const MessageController = {
             const { emal, id } = req.params
 
             const GetConnectionMsgs = await Message.find({
-                $and: [
-                    { sender: emal },
-                    { receiver: id }
-                  ]
+                $or: [
+                    {
+                        $and: [
+                            { sender: emal },
+                            { receiver: id }
+                        ]
+                    },
+                    {
+                        $and: [
+                            { sender: id },
+                            { receiver: emal }
+                        ]
+                    },
+                ]
             })
+
 
             if(GetConnectionMsgs) {
                 return res.json({ Result: GetConnectionMsgs })
