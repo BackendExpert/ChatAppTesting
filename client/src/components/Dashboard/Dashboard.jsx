@@ -98,6 +98,7 @@ const Dashboard = () => {
         if (MsgContent.current) {
             MsgContent.current.scrollTop = MsgContent.current.scrollHeight;
         }
+        
     }
 
 
