@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { BsPerson, BsPersonCircle, BsPower, BsSendFill } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
 import  secureLocalStorage  from  "react-secure-storage"
-
+import io from 'socket.io-client';
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -98,7 +98,7 @@ const Dashboard = () => {
         if (MsgContent.current) {
             MsgContent.current.scrollTop = MsgContent.current.scrollHeight;
         }
-        
+
     }
 
 
