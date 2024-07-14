@@ -160,7 +160,7 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-white rounded w-full md:ml-4 md:my-0 mt-4 shadow-md p-2 md:px-4 md:py-6">
+                        <div className="h-[600px] bg-white rounded w-full md:ml-4 md:my-0 mt-4 shadow-md p-2 md:px-4 md:py-6">
                             <div className="">
                                 <div className="flex text-gray-500">
                                     <BsPersonCircle className='h-6 w-auto pr-2'/>
@@ -168,10 +168,21 @@ const Dashboard = () => {
                                 </div>
                             </div>
                             <hr className='my-2'/>
+
+                            <div className="flex flex-col h-full">
+                                <div className="flex-grow">
+                                    chat content
+                                </div>
+                                <div className="md:mb-8 mb-10">
+                                    <form action="">
+                                        <input type="text" name="" id="" className="h-12 w-full bg-gray-200 pl-2 rounded" required placeholder='Message'/>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>                
                 </div>
-                <div className='text-gray-600 pb-4 px-4 text-sm text-center'>
+                <div className='text-gray-600 pb-4 px-4 text-sm text-center mt-4'>
                     Copyright &copy; 2024 | Online Chat App | All Right Reserved | v1.0.0<br />
                     Designed and Developed By : <a href=""><span className="text-blue-500">JehanKandy</span></a>
                 </div>
