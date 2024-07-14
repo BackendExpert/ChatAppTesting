@@ -93,6 +93,8 @@ const Dashboard = () => {
         e.preventDefault();
         SetMessageSelected(true)
         SetMsg({ MessageSend: ''})
+
+        // when type and send message the conent of Chat will be scroll to down
         if (MsgContent.current) {
             MsgContent.current.scrollTop = MsgContent.current.scrollHeight;
         }
