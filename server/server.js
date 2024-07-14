@@ -9,6 +9,7 @@ const path = require('path');
 const authRoute = require('./Routes/authRoute')
 const UserRoute = require('./Routes/UserRoute')
 const ContactRoute = require('./Routes/ContactRoute')
+const MessageRoute = require('./Routes/MessageRoute')
 
 const app = express();
 const PORT = process.env.PORT || 5000
@@ -23,6 +24,7 @@ app.use(express.json())
 app.use('/auth', authRoute)
 app.use('/user', UserRoute)
 app.use('/contact', ContactRoute)
+app.use('/message', MessageRoute)
 
 app.listen(PORT, () => {
     console.log(`Server Running on PORT ${PORT}`)
