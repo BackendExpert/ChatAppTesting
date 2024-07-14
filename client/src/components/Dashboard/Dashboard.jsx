@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import  secureLocalStorage  from  "react-secure-storage"
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('http://localhost:5173');
 
 const Dashboard = () => {
     const navigate = useNavigate()
@@ -73,14 +73,18 @@ const Dashboard = () => {
     // when click  any contecnt get data and display in div
     const [CurrentChat, SetCurrentChat] = useState([])
     const [MessageSelected, SetMessageSelected] = useState(false)
+    const [GetCurrentChatMsgs, SetGetCurrentChatMsgs] = useState([])
 
     const GetCurrentChat = (id) => {
         // alert(id)
         SetCurrentChat(id)
         SetMessageSelected(true)
 
+        const senderRev = { EmailUser, id }
 
-        
+        axios.get('http://localhost:5000/message/GetMessages', senderRev)
+        .then (res => SetGetCurrentChatMsgs(res.data.Result))
+        .catch(err => console.log(err))        
     }
 
     const [Msg, SetMsg] = useState({
