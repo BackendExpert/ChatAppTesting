@@ -103,15 +103,18 @@ const Dashboard = () => {
     // send msg
     const headleSendMsg = (e) => {
         e.preventDefault();
-        SetMessageSelected(true)
-        SetMsg({ MessageSend: ''})
+        SetMessageSelected(true)        
 
         // when type and send message the conent of Chat will be scroll to down
         if (MsgContent.current) {
             MsgContent.current.scrollTop = MsgContent.current.scrollHeight;
         }
 
-        socket.emit('chat message', Msg);
+        const MessageContnet = { EmailUser, Msg }
+
+        axios.post('http://localhost:5000/message/SendMessage', MessageContnet)
+        socket.emit('chat message', Msg.MessageSend );
+        SetMsg({ MessageSend: ''})
 
     }
 
