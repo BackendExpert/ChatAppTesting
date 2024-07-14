@@ -80,12 +80,7 @@ const Dashboard = () => {
         SetCurrentChat(id)
         SetMessageSelected(true)
 
-        const senderRev = { EmailUser, id }
-
-        axios.get('http://localhost:5000/message/GetMessages', {
-            sender: EmailUser,
-            getter: id
-        })
+        axios.get(`http://localhost:5000/message/GetMessages/${EmailUser}/${id}`)
         .then (res => SetGetCurrentChatMsgs(res.data.Result))
         .catch(err => console.log(err))        
     }
