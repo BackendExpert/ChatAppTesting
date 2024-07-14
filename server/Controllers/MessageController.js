@@ -23,8 +23,7 @@ const MessageController = {
 
     GetMessagesCurrent: async (req, res) => {
         try{
-            console.log(req.params.id)
-            console.log(req.body.id)
+            console.log(req.params.EmailUser)
         }
         catch (err) {
             console.log(err)
